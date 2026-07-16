@@ -5,50 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confidence Coach · Confidence is trained</title>
 <meta name="description" content="An AI coach that reads how you write, learns how you operate, and hands you one real world challenge every day. Two minutes. Compounding change.">
+<meta property="og:title" content="Confidence Coach · Confidence is trained">
+<meta property="og:description" content="An AI coach that learns how you operate and hands you one real world challenge every day.">
+<meta property="og:image" content="assets/today.png">
 <style>
   :root {
-    --bg: #0b0b10;
-    --panel: #15151d;
-    --panel-2: #1a1a24;
-    --line: rgba(255,255,255,.08);
-    --line-bright: rgba(255,255,255,.14);
-    --ink: #f5f5f8;
-    --ink-2: #9b9ca8;
-    --ink-3: #6d6e7a;
-    --cobalt: #5b74f5;
-    --cobalt-deep: #2b45c7;
-    --amber: #f2b24c;
-    --green: #4fa377;
-    --radius: 22px;
-    --glow: 0 0 80px rgba(91,116,245,.25);
-    color-scheme: dark;
+    --bg:#0b0b10; --bg-2:#0e0e14;
+    --panel:#15151d; --panel-2:#1a1a24;
+    --line:rgba(255,255,255,.08); --line-bright:rgba(255,255,255,.15);
+    --ink:#f5f5f8; --ink-2:#9b9ca8; --ink-3:#6d6e7a;
+    --cobalt:#5b74f5; --cobalt-deep:#2b45c7; --amber:#f2b24c; --green:#4fa377;
+    --radius:22px;
+    color-scheme:dark;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body {
     font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    background:var(--bg); color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
   ::selection { background:rgba(91,116,245,.4); }
   a { color:inherit; text-decoration:none; }
-  .wrap { max-width:1120px; margin:0 auto; padding:0 28px; }
+  img { display:block; }
+  .wrap { max-width:1140px; margin:0 auto; padding:0 28px; }
 
   body::after {
     content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.5; mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
-  main, nav, footer, header, section { position:relative; z-index:2; }
+  nav, header, section, footer { position:relative; z-index:2; }
 
+  /* ═══ Navigation ═══ */
   nav {
     position:fixed; inset:0 0 auto; z-index:40;
-    background:linear-gradient(to bottom, rgba(11,11,16,.85), rgba(11,11,16,.55));
+    background:linear-gradient(to bottom, rgba(11,11,16,.88), rgba(11,11,16,.55));
     backdrop-filter:saturate(160%) blur(20px);
-    border-bottom:1px solid transparent;
-    transition:border-color .3s;
+    border-bottom:1px solid transparent; transition:border-color .3s;
   }
   nav.scrolled { border-bottom-color:var(--line); }
-  .nav-inner { max-width:1120px; margin:0 auto; padding:16px 28px; display:flex; align-items:center; justify-content:space-between; }
+  .nav-inner { max-width:1140px; margin:0 auto; padding:16px 28px; display:flex; align-items:center; justify-content:space-between; }
   .logo { display:flex; align-items:center; gap:11px; font-weight:650; font-size:16.5px; letter-spacing:-.01em; }
   .logo svg { width:29px; height:29px; filter:drop-shadow(0 0 14px rgba(91,116,245,.5)); }
   .nav-links { display:flex; gap:30px; align-items:center; font-size:14.5px; font-weight:500; }
@@ -57,7 +53,7 @@
 
   .btn {
     position:relative; display:inline-flex; align-items:center; gap:8px;
-    background:linear-gradient(180deg, #6a82ff, var(--cobalt-deep));
+    background:linear-gradient(180deg,#6a82ff,var(--cobalt-deep));
     color:#fff; font-weight:600; font-size:15px; padding:13px 24px; border-radius:14px;
     box-shadow:0 1px 0 rgba(255,255,255,.25) inset, 0 8px 28px rgba(43,69,199,.45);
     transition:transform .18s ease, box-shadow .18s ease;
@@ -67,30 +63,28 @@
   .btn .arrow { transition:transform .18s; }
   .btn:hover .arrow { transform:translateX(3px); }
   .btn.small { padding:9px 17px; font-size:13.5px; border-radius:11px; }
-  .btn.ghost {
-    background:rgba(255,255,255,.05); box-shadow:0 0 0 1px var(--line-bright) inset; color:var(--ink);
-  }
+  .btn.ghost { background:rgba(255,255,255,.05); box-shadow:0 0 0 1px var(--line-bright) inset; color:var(--ink); }
   .btn.ghost:hover { background:rgba(255,255,255,.08); box-shadow:0 0 0 1px rgba(255,255,255,.2) inset; }
 
-  header { position:relative; padding:170px 0 110px; overflow:clip; }
+  /* ═══ Hero ═══ */
+  header { position:relative; padding:168px 0 40px; overflow:clip; }
   .mesh { position:absolute; inset:0; pointer-events:none; }
   .orb { position:absolute; border-radius:50%; filter:blur(90px); opacity:.55; will-change:transform; }
-  .orb-1 { width:640px; height:640px; left:-160px; top:-220px; background:radial-gradient(circle, rgba(43,69,199,.55), transparent 65%); }
-  .orb-2 { width:520px; height:520px; right:-140px; top:-80px;  background:radial-gradient(circle, rgba(91,116,245,.35), transparent 65%); }
-  .orb-3 { width:420px; height:420px; right:22%; bottom:-260px; background:radial-gradient(circle, rgba(242,178,76,.16), transparent 65%); }
+  .orb-1 { width:680px; height:680px; left:-180px; top:-240px; background:radial-gradient(circle, rgba(43,69,199,.55), transparent 65%); }
+  .orb-2 { width:560px; height:560px; right:-160px; top:-60px; background:radial-gradient(circle, rgba(91,116,245,.34), transparent 65%); }
+  .orb-3 { width:440px; height:440px; right:18%; bottom:-280px; background:radial-gradient(circle, rgba(242,178,76,.15), transparent 65%); }
   @media (prefers-reduced-motion:no-preference) {
-    .orb-1 { animation:drift 16s ease-in-out infinite alternate; }
-    .orb-2 { animation:drift 20s ease-in-out infinite alternate-reverse; }
-    @keyframes drift { from { transform:translate(0,0);} to { transform:translate(60px,40px);} }
+    .orb-1 { animation:drift 17s ease-in-out infinite alternate; }
+    .orb-2 { animation:drift 21s ease-in-out infinite alternate-reverse; }
+    @keyframes drift { to { transform:translate(60px,40px); } }
   }
   .hero-grid { position:absolute; inset:0; pointer-events:none; opacity:.5;
     background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size:72px 72px;
-    mask-image:radial-gradient(60% 55% at 50% 32%, black, transparent 75%);
-    -webkit-mask-image:radial-gradient(60% 55% at 50% 32%, black, transparent 75%);
+    mask-image:radial-gradient(62% 56% at 50% 30%, black, transparent 76%);
+    -webkit-mask-image:radial-gradient(62% 56% at 50% 30%, black, transparent 76%);
   }
-
-  .hero { position:relative; display:grid; grid-template-columns:1.04fr .96fr; gap:64px; align-items:center; }
+  .hero { position:relative; display:grid; grid-template-columns:1fr .92fr; gap:40px; align-items:center; }
   .eyebrow {
     display:inline-flex; align-items:center; gap:9px; font-size:12.5px; font-weight:600;
     letter-spacing:.14em; text-transform:uppercase; color:#aab7ff;
@@ -100,124 +94,174 @@
   .eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--amber); box-shadow:0 0 10px var(--amber); }
   @media (prefers-reduced-motion:no-preference) {
     .eyebrow .dot { animation:pulse 2.4s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity:1;} 50% { opacity:.35;} }
+    @keyframes pulse { 50% { opacity:.35; } }
   }
-  h1 { font-size:clamp(44px, 5.8vw, 72px); line-height:1.02; letter-spacing:-.035em; font-weight:750; }
-  h1 .grad {
-    background:linear-gradient(92deg, #8fa3ff 0%, #5b74f5 45%, #f2b24c 115%);
+  h1 { font-size:clamp(44px,5.6vw,74px); line-height:1.01; letter-spacing:-.037em; font-weight:760; }
+  .grad {
+    background:linear-gradient(92deg,#8fa3ff 0%,#5b74f5 45%,#f2b24c 115%);
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .sub { font-size:19px; color:var(--ink-2); margin:26px 0 34px; max-width:30em; line-height:1.65; }
   .sub strong { color:var(--ink); font-weight:600; }
   .hero-ctas { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
-  .store-note { display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink-3); margin-top:18px; }
-  .store-note svg { width:15px; height:15px; color:var(--green); }
+  .store-note { display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink-3); margin-top:18px; }
+  .store-note svg { width:15px; height:15px; color:var(--green); flex:none; }
 
-  .device-stage { position:relative; display:flex; justify-content:center; }
+  /* ═══ Device frames (real screenshots) ═══ */
+  .iphone {
+    --w:300px;
+    position:relative; width:var(--w); aspect-ratio:660/1434; flex:none;
+    border-radius:calc(var(--w) * .158);
+    padding:calc(var(--w) * .026);
+    background:
+      linear-gradient(145deg, #4a4a55 0%, #202027 18%, #121217 45%, #17171e 72%, #3c3c46 100%);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.06) inset,
+      0 1px 0 rgba(255,255,255,.18) inset,
+      0 -1px 0 rgba(0,0,0,.6) inset,
+      0 50px 100px rgba(0,0,0,.62);
+  }
+  .iphone::before { /* inner bezel */
+    content:""; position:absolute; inset:calc(var(--w) * .018);
+    border-radius:calc(var(--w) * .142); background:#000;
+  }
+  .iphone .screen-img {
+    position:relative; width:100%; height:100%; object-fit:cover;
+    border-radius:calc(var(--w) * .132);
+  }
+  .iphone .glass {
+    position:absolute; inset:calc(var(--w) * .026); pointer-events:none;
+    border-radius:calc(var(--w) * .132);
+    background:linear-gradient(118deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,.03) 22%, transparent 36%);
+  }
+  .iphone .side { position:absolute; background:linear-gradient(90deg,#3a3a44,#181820); border-radius:3px; }
+  .iphone .side.power { right:calc(var(--w) * -.012); top:26%; width:calc(var(--w) * .014); height:13%; }
+  .iphone .side.vol-a { left:calc(var(--w) * -.012); top:20%; width:calc(var(--w) * .014); height:7%; }
+  .iphone .side.vol-b { left:calc(var(--w) * -.012); top:29%; width:calc(var(--w) * .014); height:7%; }
+
+  .device-stage { position:relative; display:flex; justify-content:center; perspective:1400px; min-height:640px; }
+  .device-cluster { position:relative; transform-style:preserve-3d; will-change:transform; }
+  .device-main { position:relative; z-index:3; --w:302px; }
+  .device-back {
+    position:absolute; z-index:1; --w:250px;
+    right:-118px; top:64px; transform:rotate(9deg);
+    opacity:.92; filter:brightness(.82);
+  }
   .device-glow {
-    position:absolute; width:70%; height:120px; bottom:-30px; left:15%;
-    background:radial-gradient(50% 100% at 50% 0%, rgba(91,116,245,.35), transparent 70%);
-    filter:blur(30px);
+    position:absolute; z-index:0; width:520px; height:200px; bottom:-40px; left:50%; transform:translateX(-50%);
+    background:radial-gradient(50% 100% at 50% 40%, rgba(91,116,245,.38), transparent 70%);
+    filter:blur(36px);
   }
-  .device {
-    position:relative; width:330px; border-radius:52px; padding:10px;
-    background:linear-gradient(160deg, #3a3a44, #17171d 30%, #101014 70%, #2c2c35);
-    box-shadow:0 60px 120px rgba(0,0,0,.6), var(--glow);
-    transform:rotate(2.5deg);
-    transition:transform .6s cubic-bezier(.2,.8,.2,1);
-  }
-  .device:hover { transform:rotate(0deg) translateY(-6px); }
-  .screen {
-    position:relative; border-radius:43px; overflow:hidden;
-    background:#fbf9f6; color:#17171c; padding:20px 16px 22px;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;
-  }
-  .screen::after {
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(115deg, rgba(255,255,255,.16) 0%, transparent 28%);
-  }
-  .island { width:104px; height:28px; background:#0b0b10; border-radius:999px; margin:2px auto 16px; }
-  .s-greet { font-size:19px; font-weight:750; letter-spacing:-.02em; margin:0 6px 12px; }
-  .s-card { background:#fff; border:1px solid #e7e4de; border-radius:18px; padding:13px; margin:0 2px 11px;
-            box-shadow:0 4px 16px rgba(23,23,28,.05); }
-  .s-row { display:flex; align-items:center; gap:10px; }
-  .s-ring { width:46px; height:46px; border-radius:50%; flex:none;
-    background:conic-gradient(#2b45c7 0 62%, #e7e4de 62% 100%); display:grid; place-items:center; position:relative; }
-  .s-ring::after { content:""; position:absolute; inset:5px; background:#fff; border-radius:50%; }
-  .s-ring b { position:relative; z-index:1; font-size:14px; }
-  .s-meta { flex:1; }
-  .s-meta b { display:block; font-size:14px; letter-spacing:-.01em; }
-  .s-meta small { color:#5c5e66; font-size:11px; }
-  .s-flame { font-size:14px; font-weight:700; color:#e09b28; }
-  .s-label { font-size:9.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2b45c7; margin-bottom:5px; }
-  .s-insight { font-size:12px; color:#4c4e56; line-height:1.55; }
-  .s-cta { display:block; text-align:center; color:#fff; font-weight:600; font-size:13.5px;
-    background:linear-gradient(180deg,#4a66eb,#2b45c7); border-radius:12px; padding:11px; margin:2px 2px 0;
-    box-shadow:0 6px 18px rgba(43,69,199,.35); }
+  .hero-caption { position:relative; z-index:4; text-align:center; margin-top:26px; font-size:12.5px; color:var(--ink-3); letter-spacing:.02em; }
 
+  /* ═══ Challenge marquee ═══ */
+  .marquee-band { padding:64px 0 8px; overflow:hidden;
+    mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
+  .marquee { display:flex; gap:12px; width:max-content; padding:6px 0; }
+  @media (prefers-reduced-motion:no-preference) {
+    .marquee.m-a { animation:scrollA 48s linear infinite; }
+    .marquee.m-b { animation:scrollB 56s linear infinite; }
+    @keyframes scrollA { to { transform:translateX(-50%); } }
+    @keyframes scrollB { from { transform:translateX(-50%); } to { transform:translateX(0); } }
+  }
+  .mq-item {
+    display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
+    font-size:14px; font-weight:550; color:var(--ink-2);
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    box-shadow:0 0 0 1px var(--line) inset, 0 1px 0 rgba(255,255,255,.05) inset;
+    padding:11px 18px; border-radius:999px;
+  }
+  .d-pill { font-size:10.5px; font-weight:750; letter-spacing:.04em; padding:3px 8px; border-radius:999px; }
+  .d-easy { color:#7fd0a4; background:rgba(79,163,119,.14); box-shadow:0 0 0 1px rgba(79,163,119,.3) inset; }
+  .d-mid  { color:#f4c479; background:rgba(242,178,76,.12); box-shadow:0 0 0 1px rgba(242,178,76,.3) inset; }
+  .d-hard { color:#a2b2ff; background:rgba(91,116,245,.14); box-shadow:0 0 0 1px rgba(91,116,245,.35) inset; }
+
+  /* ═══ Sections ═══ */
   section { padding:120px 0; position:relative; }
-  .section-head { max-width:640px; margin-bottom:64px; }
+  .section-head { max-width:660px; margin-bottom:60px; }
   .section-head.center { margin-inline:auto; text-align:center; }
   .kicker { font-size:13px; font-weight:650; letter-spacing:.12em; text-transform:uppercase; color:var(--cobalt); margin-bottom:16px; }
-  h2 { font-size:clamp(32px, 4vw, 48px); letter-spacing:-.03em; line-height:1.08; font-weight:730; }
+  h2 { font-size:clamp(32px,4vw,48px); letter-spacing:-.03em; line-height:1.08; font-weight:730; }
   .section-head p { color:var(--ink-2); font-size:17.5px; margin-top:18px; }
 
-  .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset:step; position:relative; }
+  .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset:step; }
   .step {
     position:relative; padding:28px 24px 26px; border-radius:var(--radius); counter-increment:step;
-    background:linear-gradient(180deg, var(--panel-2), var(--panel));
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
     box-shadow:0 0 0 1px var(--line) inset, 0 1px 0 rgba(255,255,255,.05) inset;
     transition:transform .3s ease, box-shadow .3s ease;
   }
-  .step:hover { transform:translateY(-4px); box-shadow:0 0 0 1px var(--line-bright) inset, 0 1px 0 rgba(255,255,255,.08) inset, 0 24px 48px rgba(0,0,0,.4); }
-  .step::before {
-    content:"0" counter(step); font-size:13px; font-weight:700; letter-spacing:.08em; color:var(--cobalt);
-    display:block; margin-bottom:18px;
-  }
+  .step:hover { transform:translateY(-4px); box-shadow:0 0 0 1px var(--line-bright) inset, 0 24px 48px rgba(0,0,0,.4); }
+  .step::before { content:"0" counter(step); font-size:13px; font-weight:700; letter-spacing:.08em; color:var(--cobalt); display:block; margin-bottom:18px; }
   .step h3 { font-size:17px; letter-spacing:-.01em; margin-bottom:9px; font-weight:650; }
   .step p { font-size:14.5px; color:var(--ink-2); }
 
+  /* ═══ Showcase (real product gallery) ═══ */
+  .showcase { padding-top:20px; }
+  .shots {
+    display:flex; gap:34px; overflow-x:auto; padding:30px 8px 26px;
+    scroll-snap-type:x mandatory; scrollbar-width:none;
+    mask-image:linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+  }
+  .shots::-webkit-scrollbar { display:none; }
+  .shot { scroll-snap-align:center; text-align:center; }
+  .shot .iphone { --w:236px; margin:0 auto; transition:transform .35s ease; }
+  .shot:hover .iphone { transform:translateY(-8px); }
+  .shot figcaption { margin-top:18px; }
+  .shot .cap-t { font-size:15px; font-weight:650; letter-spacing:-.01em; }
+  .shot .cap-s { font-size:13px; color:var(--ink-3); margin-top:3px; }
+
+  /* ═══ Bento ═══ */
   .bento { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
   .tile {
     position:relative; border-radius:var(--radius); padding:30px; overflow:hidden;
-    background:linear-gradient(180deg, var(--panel-2), var(--panel));
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
     box-shadow:0 0 0 1px var(--line) inset, 0 1px 0 rgba(255,255,255,.05) inset;
     transition:transform .3s ease, box-shadow .3s ease;
   }
   .tile:hover { transform:translateY(-4px); box-shadow:0 0 0 1px var(--line-bright) inset, 0 24px 48px rgba(0,0,0,.4); }
   .tile h3 { font-size:19px; letter-spacing:-.015em; font-weight:650; margin-bottom:10px; }
-  .tile p { font-size:15px; color:var(--ink-2); max-width:44ch; }
-  .tile .chip { position:absolute; top:24px; right:24px; font-size:11px; font-weight:700; letter-spacing:.08em;
-    text-transform:uppercase; color:var(--amber); background:rgba(242,178,76,.1);
-    box-shadow:0 0 0 1px rgba(242,178,76,.25) inset; padding:5px 10px; border-radius:999px; }
-  .t-score { grid-column:span 4; display:grid; grid-template-columns:200px 1fr; gap:34px; align-items:center; min-height:280px; }
-  .t-score .big-ring { width:200px; height:200px; }
-  .big-ring circle.track { stroke:rgba(255,255,255,.09); }
-  .big-ring .arc { stroke:url(#ringGrad); stroke-dasharray:516; stroke-dashoffset:516; transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1); }
-  .big-ring.drawn .arc { stroke-dashoffset:196; }
+  .tile p { font-size:15px; color:var(--ink-2); max-width:46ch; }
+  .t-curve { grid-column:span 4; min-height:300px; }
   .t-mem { grid-column:span 2; }
   .t-voice { grid-column:span 2; }
-  .t-chal { grid-column:span 2;
-    background:linear-gradient(180deg, rgba(43,69,199,.32), var(--panel)), linear-gradient(180deg, var(--panel-2), var(--panel)); }
   .t-judge { grid-column:span 2; }
-  .quote-line { font-size:14px; color:var(--ink-2); font-style:italic; border-left:2px solid var(--cobalt);
-    padding-left:12px; margin-top:16px; }
-  .stat { font-size:44px; font-weight:750; letter-spacing:-.03em;
-    background:linear-gradient(92deg,#8fa3ff,#5b74f5); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .t-priv { grid-column:span 2; }
+  .quote-line { font-size:14px; color:var(--ink-2); font-style:italic; border-left:2px solid var(--cobalt); padding-left:12px; margin-top:16px; }
   .eq { display:flex; gap:3px; align-items:flex-end; height:34px; margin-top:18px; }
   .eq i { width:5px; border-radius:3px; background:linear-gradient(180deg,#8fa3ff,#5b74f5); opacity:.85; }
   @media (prefers-reduced-motion:no-preference) {
     .eq i { animation:eq 1.3s ease-in-out infinite alternate; }
-    @keyframes eq { from { transform:scaleY(.35);} to { transform:scaleY(1);} }
+    @keyframes eq { from { transform:scaleY(.35); } }
   }
+  .curve-svg { width:100%; height:auto; margin-top:18px; }
+  .curve-svg .path { stroke-dasharray:900; stroke-dashoffset:900; transition:stroke-dashoffset 2s cubic-bezier(.2,.7,.2,1) .2s; }
+  .curve-svg.drawn .path { stroke-dashoffset:0; }
+  .curve-svg text { font-family:inherit; }
 
+  /* ═══ Library ═══ */
+  .lib-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .lib-card {
+    border-radius:18px; padding:24px;
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    box-shadow:0 0 0 1px var(--line) inset, 0 1px 0 rgba(255,255,255,.05) inset;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .lib-card:hover { transform:translateY(-4px); box-shadow:0 0 0 1px var(--line-bright) inset, 0 20px 44px rgba(0,0,0,.4); }
+  .lib-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .lib-dim { font-size:11px; font-weight:650; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); }
+  .lib-card h3 { font-size:16.5px; font-weight:650; letter-spacing:-.01em; margin-bottom:7px; }
+  .lib-card p { font-size:13.5px; color:var(--ink-2); }
+  .lib-note { text-align:center; color:var(--ink-3); font-size:13.5px; margin-top:26px; }
+
+  /* ═══ Pricing ═══ */
   .plans { display:grid; grid-template-columns:1fr 1.08fr; gap:18px; max-width:820px; margin:0 auto; }
-  .plan { border-radius:var(--radius); padding:34px; background:linear-gradient(180deg, var(--panel-2), var(--panel));
-          box-shadow:0 0 0 1px var(--line) inset; position:relative; }
+  .plan { border-radius:var(--radius); padding:34px; background:linear-gradient(180deg,var(--panel-2),var(--panel)); box-shadow:0 0 0 1px var(--line) inset; position:relative; }
   .plan.best {
-    background:
-      linear-gradient(var(--panel-2), var(--panel)) padding-box,
-      conic-gradient(from 210deg, #5b74f5, #f2b24c, #5b74f5) border-box;
+    background:linear-gradient(var(--panel-2),var(--panel)) padding-box,
+               conic-gradient(from 210deg,#5b74f5,#f2b24c,#5b74f5) border-box;
     border:1.5px solid transparent; box-shadow:0 30px 80px rgba(43,69,199,.25);
   }
   .badge { position:absolute; top:-13px; left:30px; background:linear-gradient(180deg,#6a82ff,#2b45c7); color:#fff;
@@ -225,7 +269,7 @@
     box-shadow:0 6px 18px rgba(43,69,199,.5); }
   .plan h3 { font-size:16px; font-weight:650; color:var(--ink-2); }
   .price { font-size:46px; font-weight:750; letter-spacing:-.03em; margin:12px 0 2px; }
-  .price small { font-size:16px; font-weight:500; color:var(--ink-2); letter-spacing:0; }
+  .price small { font-size:16px; font-weight:500; color:var(--ink-2); }
   .per { font-size:13.5px; color:var(--ink-3); margin-bottom:22px; }
   .plan ul { list-style:none; }
   .plan li { padding:8px 0 8px 30px; font-size:14.5px; position:relative; color:var(--ink-2); }
@@ -234,9 +278,9 @@
     box-shadow:0 0 0 1px rgba(79,163,119,.3) inset; }
   .fineprint { text-align:center; color:var(--ink-3); font-size:13px; margin:26px auto 0; max-width:60ch; }
 
+  /* ═══ FAQ ═══ */
   .faq { max-width:740px; margin:0 auto; }
-  details { border-radius:16px; margin-bottom:10px; background:var(--panel);
-    box-shadow:0 0 0 1px var(--line) inset; overflow:hidden; }
+  details { border-radius:16px; margin-bottom:10px; background:var(--panel); box-shadow:0 0 0 1px var(--line) inset; overflow:hidden; }
   summary { font-weight:600; font-size:16px; letter-spacing:-.01em; cursor:pointer; list-style:none;
     display:flex; justify-content:space-between; align-items:center; padding:20px 24px; }
   summary::-webkit-details-marker { display:none; }
@@ -244,7 +288,7 @@
   details[open] summary::after { transform:rotate(45deg); }
   details p { color:var(--ink-2); font-size:15px; padding:0 24px 22px; max-width:64ch; }
 
-  .cta-band { text-align:center; padding:150px 0 160px; position:relative; overflow:clip; }
+  .cta-band { text-align:center; padding:150px 0 160px; overflow:clip; }
   .cta-band .orb { left:50%; top:50%; transform:translate(-50%,-30%); width:720px; height:520px; opacity:.5;
     background:radial-gradient(circle, rgba(43,69,199,.5), transparent 65%); }
   .cta-band h2 { font-size:clamp(36px,4.6vw,58px); }
@@ -256,28 +300,29 @@
   .foot-links a { color:var(--ink-2); transition:color .2s; }
   .foot-links a:hover { color:var(--ink); }
   .foot small { display:block; margin-top:16px; font-size:12.5px; max-width:64ch; line-height:1.7; }
-  .foot a.em { color:var(--ink-2); }
 
   .reveal { opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
   .reveal.in { opacity:1; transform:none; }
-  @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } .device { transform:none; } }
+  @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
 
-  @media (max-width:960px) {
-    header { padding:140px 0 80px; }
-    .hero { grid-template-columns:1fr; gap:56px; text-align:center; }
+  @media (max-width:980px) {
+    header { padding:140px 0 30px; }
+    .hero { grid-template-columns:1fr; gap:60px; text-align:center; }
     .sub { margin-inline:auto; }
-    .hero-ctas, .store-note { justify-content:center; }
+    .hero-ctas { justify-content:center; }
+    .device-stage { min-height:auto; }
+    .device-back { right:-60px; }
     .steps { grid-template-columns:1fr 1fr; }
     .bento { grid-template-columns:1fr 1fr; }
-    .t-score { grid-column:span 2; grid-template-columns:1fr; text-align:center; }
-    .t-score .big-ring { margin:0 auto; }
-    .t-mem,.t-voice,.t-chal,.t-judge { grid-column:span 2; }
+    .t-curve,.t-mem,.t-voice,.t-judge,.t-priv { grid-column:span 2; }
+    .lib-grid { grid-template-columns:1fr 1fr; }
     .plans { grid-template-columns:1fr; }
     .nav-links a:not(.btn) { display:none; }
   }
-  @media (max-width:560px) {
-    .steps { grid-template-columns:1fr; }
+  @media (max-width:600px) {
+    .steps, .lib-grid { grid-template-columns:1fr; }
     section { padding:88px 0; }
+    .device-back { display:none; }
   }
 </style>
 </head>
@@ -295,7 +340,8 @@
     </a>
     <div class="nav-links">
       <a href="#how">Method</a>
-      <a href="#inside">Inside</a>
+      <a href="#product">Product</a>
+      <a href="#library">Challenges</a>
       <a href="#pricing">Pricing</a>
       <a class="btn small" href="#download">Get the app</a>
     </div>
@@ -309,7 +355,7 @@
     <div class="orb orb-3" data-depth="0.35"></div>
   </div>
   <div class="hero-grid"></div>
-  <main class="wrap hero">
+  <div class="wrap hero">
     <div>
       <span class="eyebrow"><span class="dot"></span>Daily AI confidence training</span>
       <h1>Confidence is trained. <span class="grad">Not wished for.</span></h1>
@@ -323,37 +369,63 @@
         Free to start. Your first full day is on us, no payment required.
       </p>
     </div>
-    <div class="device-stage reveal">
-      <div class="device-glow"></div>
-      <div class="device" role="img" aria-label="Confidence Coach app showing the daily journey screen">
-        <div class="screen">
-          <div class="island"></div>
-          <div class="s-greet">Good morning</div>
-          <div class="s-card">
-            <div class="s-row">
-              <div class="s-ring"><b>57</b></div>
-              <div class="s-meta"><b>Day 12</b><small>Confidence</small></div>
-              <div class="s-flame">🔥 8</div>
-            </div>
-            <svg viewBox="0 0 260 54" fill="none" style="margin-top:12px" aria-hidden="true">
-              <path d="M10 44 C 60 40, 80 36, 120 30 S 210 16, 250 12" stroke="#e7e4de" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
-              <circle cx="10" cy="44" r="7" fill="rgba(61,135,97,.18)"/><text x="10" y="47.5" text-anchor="middle" font-size="8" fill="#3d8761">✓</text>
-              <circle cx="70" cy="37" r="7" fill="rgba(61,135,97,.18)"/><text x="70" y="40.5" text-anchor="middle" font-size="8" fill="#3d8761">✓</text>
-              <circle cx="130" cy="29" r="7" fill="rgba(61,135,97,.18)"/><text x="130" y="32.5" text-anchor="middle" font-size="8" fill="#3d8761">✓</text>
-              <circle cx="190" cy="20" r="13" fill="rgba(43,69,199,.18)"/>
-              <circle cx="190" cy="20" r="9" fill="#2b45c7"/>
-              <circle cx="250" cy="12" r="7" stroke="#d9d6cf" stroke-width="2" stroke-dasharray="3 3" fill="none"/>
-            </svg>
+    <div>
+      <div class="device-stage reveal">
+        <div class="device-glow"></div>
+        <div class="device-cluster" id="cluster">
+          <div class="iphone device-back">
+            <img class="screen-img" src="assets/chat.png" alt="" loading="eager">
+            <span class="glass"></span>
           </div>
-          <div class="s-card">
-            <div class="s-label">Your coach noticed something</div>
-            <p class="s-insight">You spoke up before you felt ready yesterday, and it landed. Today we make that repeatable.</p>
+          <div class="iphone device-main">
+            <img class="screen-img" src="assets/today.png" alt="Confidence Coach app, the Today screen with journey path, confidence score and streak" loading="eager">
+            <span class="glass"></span>
+            <span class="side power"></span><span class="side vol-a"></span><span class="side vol-b"></span>
           </div>
-          <span class="s-cta">Start My Check-In</span>
         </div>
       </div>
+      <p class="hero-caption">Real product. Actual screens, untouched.</p>
     </div>
-  </main>
+  </div>
+
+  <div class="marquee-band" aria-hidden="true">
+    <div class="marquee m-a">
+      <span class="mq-item">The Eye-Contact Hello <i class="d-pill d-easy">D1</i></span>
+      <span class="mq-item">Speak First <i class="d-pill d-easy">D1</i></span>
+      <span class="mq-item">Order Unrehearsed <i class="d-pill d-easy">D2</i></span>
+      <span class="mq-item">Voice on Record <i class="d-pill d-easy">D2</i></span>
+      <span class="mq-item">The Clean No <i class="d-pill d-mid">D3</i></span>
+      <span class="mq-item">Raise the Hand <i class="d-pill d-mid">D3</i></span>
+      <span class="mq-item">First Ten Minutes <i class="d-pill d-mid">D4</i></span>
+      <span class="mq-item">The New Face <i class="d-pill d-mid">D4</i></span>
+      <span class="mq-item">The Eye-Contact Hello <i class="d-pill d-easy">D1</i></span>
+      <span class="mq-item">Speak First <i class="d-pill d-easy">D1</i></span>
+      <span class="mq-item">Order Unrehearsed <i class="d-pill d-easy">D2</i></span>
+      <span class="mq-item">Voice on Record <i class="d-pill d-easy">D2</i></span>
+      <span class="mq-item">The Clean No <i class="d-pill d-mid">D3</i></span>
+      <span class="mq-item">Raise the Hand <i class="d-pill d-mid">D3</i></span>
+      <span class="mq-item">First Ten Minutes <i class="d-pill d-mid">D4</i></span>
+      <span class="mq-item">The New Face <i class="d-pill d-mid">D4</i></span>
+    </div>
+    <div class="marquee m-b" style="margin-top:12px">
+      <span class="mq-item">Join the Circle <i class="d-pill d-mid">D5</i></span>
+      <span class="mq-item">Say the Number <i class="d-pill d-mid">D6</i></span>
+      <span class="mq-item">The Coffee Invite <i class="d-pill d-mid">D6</i></span>
+      <span class="mq-item">Collect Three No's <i class="d-pill d-hard">D7</i></span>
+      <span class="mq-item">Run the Meeting <i class="d-pill d-hard">D7</i></span>
+      <span class="mq-item">The Cold Reach-Out <i class="d-pill d-hard">D7</i></span>
+      <span class="mq-item">Open Mic <i class="d-pill d-hard">D8</i></span>
+      <span class="mq-item">The Karaoke Solo <i class="d-pill d-hard">D7</i></span>
+      <span class="mq-item">Join the Circle <i class="d-pill d-mid">D5</i></span>
+      <span class="mq-item">Say the Number <i class="d-pill d-mid">D6</i></span>
+      <span class="mq-item">The Coffee Invite <i class="d-pill d-mid">D6</i></span>
+      <span class="mq-item">Collect Three No's <i class="d-pill d-hard">D7</i></span>
+      <span class="mq-item">Run the Meeting <i class="d-pill d-hard">D7</i></span>
+      <span class="mq-item">The Cold Reach-Out <i class="d-pill d-hard">D7</i></span>
+      <span class="mq-item">Open Mic <i class="d-pill d-hard">D8</i></span>
+      <span class="mq-item">The Karaoke Solo <i class="d-pill d-hard">D7</i></span>
+    </div>
+  </div>
 </header>
 
 <section id="how">
@@ -372,6 +444,38 @@
   </div>
 </section>
 
+<section id="product" class="showcase" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="kicker">The product</div>
+      <h2>This is the actual app.</h2>
+      <p>No mockups, no renders. Five real screens from a real day.</p>
+    </div>
+  </div>
+  <div class="shots">
+    <figure class="shot reveal">
+      <div class="iphone"><img class="screen-img" src="assets/assessment.png" alt="Assessment question answered in the user's own words" loading="lazy"><span class="glass"></span></div>
+      <figcaption><div class="cap-t">Write, and be read</div><div class="cap-s">Six questions. Your words carry the signal.</div></figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <div class="iphone"><img class="screen-img" src="assets/score.png" alt="Score reveal with AI interpretation" loading="lazy"><span class="glass"></span></div>
+      <figcaption><div class="cap-t">Meet your score</div><div class="cap-s">Six dimensions, read from how you write.</div></figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <div class="iphone"><img class="screen-img" src="assets/chat.png" alt="Daily reflection chat with the coach" loading="lazy"><span class="glass"></span></div>
+      <figcaption><div class="cap-t">Talk it through</div><div class="cap-s">A real conversation, judged honestly.</div></figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <div class="iphone"><img class="screen-img" src="assets/plan.png" alt="Daily plan with coaching audio player" loading="lazy"><span class="glass"></span></div>
+      <figcaption><div class="cap-t">Hear your coach</div><div class="cap-s">Five minutes that end with today's challenge.</div></figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <div class="iphone"><img class="screen-img" src="assets/progress.png" alt="Progress tab with trends and streak calendar" loading="lazy"><span class="glass"></span></div>
+      <figcaption><div class="cap-t">Watch yourself climb</div><div class="cap-s">Trends, streaks, milestones, evidence.</div></figcaption>
+    </figure>
+  </div>
+</section>
+
 <section id="inside" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head reveal">
@@ -379,22 +483,31 @@
       <h2>Built like a real coach.<br>Not a chatbot with a paywall.</h2>
     </div>
     <div class="bento">
-      <div class="tile t-score reveal">
-        <svg class="big-ring" id="bigRing" viewBox="0 0 200 200" fill="none" aria-label="Confidence score ring">
-          <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#8fa3ff"/><stop offset="1" stop-color="#5b74f5"/>
-          </linearGradient></defs>
-          <circle class="track" cx="100" cy="100" r="82" stroke-width="15"/>
-          <circle class="arc" cx="100" cy="100" r="82" stroke-width="15" stroke-linecap="round"
-                  transform="rotate(-90 100 100)"/>
-          <text x="100" y="95" text-anchor="middle" font-size="42" font-weight="750" fill="#f5f5f8">57</text>
-          <text x="100" y="121" text-anchor="middle" font-size="12" fill="#9b9ca8">CONFIDENCE</text>
+      <div class="tile t-curve reveal">
+        <h3>A score you can't fake</h3>
+        <p>Computed server side from your coach's honest judgment of what you actually did. Early gains come fast. Past 70, you earn every point.</p>
+        <svg class="curve-svg" id="curve" viewBox="0 0 560 200" fill="none" aria-label="Typical score progression: fast early gains, then a hard earned climb">
+          <defs>
+            <linearGradient id="curveG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8fa3ff"/><stop offset=".7" stop-color="#5b74f5"/><stop offset="1" stop-color="#f2b24c"/>
+            </linearGradient>
+            <linearGradient id="fillG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="rgba(91,116,245,.22)"/><stop offset="1" stop-color="rgba(91,116,245,0)"/>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="52" x2="560" y2="52" stroke="rgba(255,255,255,.07)" stroke-dasharray="4 6"/>
+          <text x="8" y="44" font-size="11" fill="#6d6e7a">85 · rare air</text>
+          <line x1="0" y1="96" x2="560" y2="96" stroke="rgba(255,255,255,.07)" stroke-dasharray="4 6"/>
+          <text x="8" y="88" font-size="11" fill="#6d6e7a">70 · the grind begins</text>
+          <path d="M20 168 C 90 150, 120 118, 190 100 C 250 86, 300 80, 380 70 C 450 62, 510 58, 545 56 L545 200 L20 200 Z" fill="url(#fillG)"/>
+          <path class="path" d="M20 168 C 90 150, 120 118, 190 100 C 250 86, 300 80, 380 70 C 450 62, 510 58, 545 56" stroke="url(#curveG)" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="20" cy="168" r="5" fill="#5b74f5"/>
+          <text x="30" y="184" font-size="11" fill="#9b9ca8">Day 1 · 42</text>
+          <circle cx="190" cy="100" r="5" fill="#5b74f5"/>
+          <text x="176" y="126" font-size="11" fill="#9b9ca8">Week 3 · 63</text>
+          <circle cx="545" cy="56" r="6" fill="#f2b24c"/>
+          <text x="470" y="42" font-size="11" fill="#9b9ca8">Month 3 · 78</text>
         </svg>
-        <div>
-          <h3>A score you can't fake</h3>
-          <p>Computed server side from your coach's honest judgment of what you actually did. The AI never invents the number, and neither can you. Early gains come fast. Past 70, you earn every point.</p>
-          <p class="quote-line">Avoidance costs momentum. Tomorrow is a fresh rep.</p>
-        </div>
       </div>
       <div class="tile t-mem reveal">
         <h3>A coach with memory</h3>
@@ -411,17 +524,58 @@
           <i style="height:50%;animation-delay:.2s"></i><i style="height:75%;animation-delay:.35s"></i>
         </div>
       </div>
-      <div class="tile t-chal reveal">
-        <span class="chip">Field tested</span>
-        <div class="stat">200</div>
-        <h3>Real world challenges</h3>
-        <p>From a first hello to the ask you've been avoiding for years. Personalized to your day, laddered to your level, safety gated.</p>
-      </div>
       <div class="tile t-judge reveal">
+        <h3>Honest judging</h3>
+        <p>Crushed it, partial, or avoided: your coach reads your reflection and calls it fairly. The truth is what makes the number mean something.</p>
+      </div>
+      <div class="tile t-priv reveal">
         <h3>Private by design</h3>
         <p>See everything your coach knows. Edit it, export it, or erase it, free or paid. Your words never enter analytics and are never sold.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="library" style="padding-top:20px">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The challenge library</div>
+      <h2>200 challenges.<br>Field tested, safety gated.</h2>
+      <p>Rooted in graded exposure practice. Personalized to your day, laddered to your level. The bold ones are strictly opt in.</p>
+    </div>
+    <div class="lib-grid">
+      <div class="lib-card reveal">
+        <div class="lib-top"><span class="lib-dim">Social confidence</span><i class="d-pill d-easy">D1</i></div>
+        <h3>The Eye-Contact Hello</h3>
+        <p>Make eye contact with three passersby and give a small nod or smile. Builds comfort being visible.</p>
+      </div>
+      <div class="lib-card reveal">
+        <div class="lib-top"><span class="lib-dim">Assertiveness</span><i class="d-pill d-mid">D4</i></div>
+        <h3>First Ten Minutes</h3>
+        <p>Contribute one question or opinion within the first ten minutes of your next meeting, before hesitation compounds.</p>
+      </div>
+      <div class="lib-card reveal">
+        <div class="lib-top"><span class="lib-dim">Self belief</span><i class="d-pill d-mid">D4</i></div>
+        <h3>Say the Win</h3>
+        <p>Tell one person about something you did well this week, without downplaying it once.</p>
+      </div>
+      <div class="lib-card reveal">
+        <div class="lib-top"><span class="lib-dim">Resilience</span><i class="d-pill d-hard">D7</i></div>
+        <h3>Collect Three No's</h3>
+        <p>Make three requests today that will probably be declined. The no's are the success.</p>
+      </div>
+      <div class="lib-card reveal">
+        <div class="lib-top"><span class="lib-dim">Assertiveness</span><i class="d-pill d-mid">D6</i></div>
+        <h3>Say the Number</h3>
+        <p>State your rate or expectation without softening it. Then stop talking and let the silence work.</p>
+      </div>
+      <div class="lib-card reveal">
+        <div class="lib-top"><span class="lib-dim">Courageous action</span><i class="d-pill d-hard">D8</i></div>
+        <h3>Open Mic</h3>
+        <p>Two minutes at an open mic or community event. The most feared rep, and the highest transfer.</p>
+      </div>
+    </div>
+    <p class="lib-note reveal">Tier five challenges exist. You will know when you're ready.</p>
   </div>
 </section>
 
@@ -478,7 +632,7 @@
 <section class="cta-band" id="download">
   <div class="orb"></div>
   <div class="wrap" style="position:relative">
-    <h2 class="reveal">Two minutes with AI.<br><span class="grad" style="background:linear-gradient(92deg,#8fa3ff,#5b74f5,#f2b24c);-webkit-background-clip:text;background-clip:text;color:transparent">One challenge every day.</span></h2>
+    <h2 class="reveal">Two minutes with AI.<br><span class="grad">One challenge every day.</span></h2>
     <p class="sub reveal">A more confident you is a daily practice away.</p>
     <a class="btn reveal" href="#" title="Coming soon to the App Store">Coming soon to the App Store</a>
   </div>
@@ -495,7 +649,7 @@
         </svg>
         Confidence Coach
       </span>
-      <small>© 2026 Emouna LLC · <a class="em" href="https://emouna.com.mx">emouna.com.mx</a><br>
+      <small>© 2026 Emouna LLC · <a href="https://emouna.com.mx" style="color:var(--ink-2)">emouna.com.mx</a><br>
       Coaching content and voice are AI generated. Confidence Coach is for personal development, ages 18 and up. It is not therapy or medical care.</small>
     </div>
     <div class="foot-links">
@@ -509,24 +663,35 @@
 <script>
   const io = new IntersectionObserver((es) => {
     for (const e of es) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-  }, { threshold: .14 });
+  }, { threshold:.14 });
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  const ring = document.getElementById("bigRing");
-  if (ring) new IntersectionObserver((es, o) => {
-    if (es[0].isIntersecting) { ring.classList.add("drawn"); o.disconnect(); }
-  }, { threshold: .5 }).observe(ring);
+  const curve = document.getElementById("curve");
+  if (curve) new IntersectionObserver((es, o) => {
+    if (es[0].isIntersecting) { curve.classList.add("drawn"); o.disconnect(); }
+  }, { threshold:.4 }).observe(curve);
 
   const nav = document.getElementById("nav");
   const orbs = document.querySelectorAll(".orb[data-depth]");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   addEventListener("scroll", () => {
     nav.classList.toggle("scrolled", scrollY > 8);
-    if (!reduced) {
-      const y = scrollY;
-      orbs.forEach((o) => { o.style.transform = `translateY(${y * o.dataset.depth * -0.3}px)`; });
-    }
-  }, { passive: true });
+    if (!reduced) orbs.forEach((o) => { o.style.transform = `translateY(${scrollY * o.dataset.depth * -0.3}px)`; });
+  }, { passive:true });
+
+  // Gentle 3D tilt on the hero device cluster (pointer devices only).
+  const cluster = document.getElementById("cluster");
+  if (cluster && matchMedia("(hover:hover)").matches && !reduced) {
+    const stage = cluster.parentElement;
+    stage.addEventListener("pointermove", (e) => {
+      const r = stage.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      cluster.style.transform = `rotateY(${x * 10}deg) rotateX(${y * -8}deg)`;
+    });
+    stage.addEventListener("pointerleave", () => { cluster.style.transform = "rotateY(0) rotateX(0)"; });
+    cluster.style.transition = "transform .25s ease-out";
+  }
 </script>
 </body>
 </html>
