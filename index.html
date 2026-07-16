@@ -7,7 +7,7 @@
 <meta name="description" content="An AI coach that reads how you write, learns how you operate, and hands you one real world challenge every day. Two minutes. Compounding change.">
 <meta property="og:title" content="Confidence Coach · Confidence is trained">
 <meta property="og:description" content="An AI coach that learns how you operate and hands you one real world challenge every day.">
-<meta property="og:image" content="https://confidence-coach.app/assets/today.png">
+<meta property="og:image" content="https://confidence-coach.app/assets/today.webp">
 <meta property="og:url" content="https://confidence-coach.app/">
 <link rel="canonical" href="https://confidence-coach.app/">
 <style>
@@ -106,7 +106,8 @@
   .sub { font-size:19px; color:var(--ink-2); margin:26px 0 34px; max-width:30em; line-height:1.65; }
   .sub strong { color:var(--ink); font-weight:600; }
   .hero-ctas { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
-  .store-note { display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink-3); margin-top:18px; }
+  .store-note { display:inline-flex; align-items:flex-start; gap:8px; font-size:13.5px; color:var(--ink-3); margin-top:18px; max-width:34em; text-align:left; }
+  .store-note svg { margin-top:3px; }
   .store-note svg { width:15px; height:15px; color:var(--green); flex:none; }
 
   /* ═══ Device frames (real screenshots) ═══ */
@@ -323,8 +324,16 @@
   }
   @media (max-width:600px) {
     .steps, .lib-grid { grid-template-columns:1fr; }
-    section { padding:88px 0; }
+    section { padding:76px 0; }
+    .sub { font-size:17px; }
     .device-back { display:none; }
+    .device-stage { min-height:auto; }
+    .shots { gap:22px; padding:22px 8px; }
+    .shot .iphone { --w:216px; }
+    .mq-item { font-size:13px; padding:9px 15px; }
+    .cta-band { padding:100px 0 110px; }
+    .plan { padding:26px; }
+    .tile { padding:24px; }
   }
 </style>
 </head>
@@ -376,11 +385,11 @@
         <div class="device-glow"></div>
         <div class="device-cluster" id="cluster">
           <div class="iphone device-back">
-            <img class="screen-img" src="assets/chat.png" alt="" loading="eager">
+            <img decoding="async" class="screen-img" src="assets/chat.webp" alt="" loading="eager">
             <span class="glass"></span>
           </div>
           <div class="iphone device-main">
-            <img class="screen-img" src="assets/today.png" alt="Confidence Coach app, the Today screen with journey path, confidence score and streak" loading="eager">
+            <img decoding="async" class="screen-img" src="assets/today.webp" alt="Confidence Coach app, the Today screen with journey path, confidence score and streak" loading="eager">
             <span class="glass"></span>
             <span class="side power"></span><span class="side vol-a"></span><span class="side vol-b"></span>
           </div>
@@ -456,23 +465,23 @@
   </div>
   <div class="shots">
     <figure class="shot reveal">
-      <div class="iphone"><img class="screen-img" src="assets/assessment.png" alt="Assessment question answered in the user's own words" loading="lazy"><span class="glass"></span></div>
+      <div class="iphone"><img decoding="async" class="screen-img" src="assets/assessment.webp" alt="Assessment question answered in the user's own words" loading="lazy"><span class="glass"></span></div>
       <figcaption><div class="cap-t">Write, and be read</div><div class="cap-s">Six questions. Your words carry the signal.</div></figcaption>
     </figure>
     <figure class="shot reveal">
-      <div class="iphone"><img class="screen-img" src="assets/score.png" alt="Score reveal with AI interpretation" loading="lazy"><span class="glass"></span></div>
+      <div class="iphone"><img decoding="async" class="screen-img" src="assets/score.webp" alt="Score reveal with AI interpretation" loading="lazy"><span class="glass"></span></div>
       <figcaption><div class="cap-t">Meet your score</div><div class="cap-s">Six dimensions, read from how you write.</div></figcaption>
     </figure>
     <figure class="shot reveal">
-      <div class="iphone"><img class="screen-img" src="assets/chat.png" alt="Daily reflection chat with the coach" loading="lazy"><span class="glass"></span></div>
+      <div class="iphone"><img decoding="async" class="screen-img" src="assets/chat.webp" alt="Daily reflection chat with the coach" loading="lazy"><span class="glass"></span></div>
       <figcaption><div class="cap-t">Talk it through</div><div class="cap-s">A real conversation, judged honestly.</div></figcaption>
     </figure>
     <figure class="shot reveal">
-      <div class="iphone"><img class="screen-img" src="assets/plan.png" alt="Daily plan with coaching audio player" loading="lazy"><span class="glass"></span></div>
+      <div class="iphone"><img decoding="async" class="screen-img" src="assets/plan.webp" alt="Daily plan with coaching audio player" loading="lazy"><span class="glass"></span></div>
       <figcaption><div class="cap-t">Hear your coach</div><div class="cap-s">Five minutes that end with today's challenge.</div></figcaption>
     </figure>
     <figure class="shot reveal">
-      <div class="iphone"><img class="screen-img" src="assets/progress.png" alt="Progress tab with trends and streak calendar" loading="lazy"><span class="glass"></span></div>
+      <div class="iphone"><img decoding="async" class="screen-img" src="assets/progress.webp" alt="Progress tab with trends and streak calendar" loading="lazy"><span class="glass"></span></div>
       <figcaption><div class="cap-t">Watch yourself climb</div><div class="cap-s">Trends, streaks, milestones, evidence.</div></figcaption>
     </figure>
   </div>
