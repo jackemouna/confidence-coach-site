@@ -5,59 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy · Confidence Coach</title>
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         max-width: 720px; margin: 0 auto; padding: 32px 20px; line-height: 1.6;
-         color: #17171c; background: #fbf9f6; }
-  @media (prefers-color-scheme: dark) { body { color: #f4f4f7; background: #121216; } a { color: #8fa1ff; } }
-  h1 { font-size: 1.8em; } h2 { font-size: 1.2em; margin-top: 1.8em; }
-  a { color: #2b45c7; }
-  .updated { color: #777; font-size: 0.9em; }
+  :root { --ink:#17171c; --ink-2:#5c5e66; --paper:#fbf9f6; --card:#fff; --line:#e7e4de;
+          --cobalt:#2b45c7; --amber:#f2b24c; color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#f4f4f7; --ink-2:#a7a9b3; --paper:#121216; --card:#1c1c21; --line:#2c2c33; --cobalt:#7186f2; } }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+         background:var(--paper); color:var(--ink); line-height:1.65; -webkit-font-smoothing:antialiased; }
+  a { color:var(--cobalt); text-decoration:none; }
+  nav { position:sticky; top:0; backdrop-filter:blur(18px); background:color-mix(in srgb, var(--paper) 80%, transparent);
+        border-bottom:1px solid var(--line); }
+  .nav-inner { max-width:760px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:10px; font-weight:700; }
+  .nav-inner svg { width:26px; height:26px; }
+  main { max-width:760px; margin:0 auto; padding:48px 24px 80px; }
+  h1 { font-size:34px; letter-spacing:-.02em; margin-bottom:6px; }
+  .updated { color:var(--ink-2); font-size:14px; margin-bottom:34px; }
+  h2 { font-size:19px; margin:34px 0 10px; }
+  p, li { color:var(--ink-2); font-size:15.5px; }
+  strong { color:var(--ink); }
+  ul { margin:10px 0 10px 22px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:18px 0; }
+  footer { max-width:760px; margin:0 auto; padding:0 24px 60px; color:var(--ink-2); font-size:13px; }
 </style>
 </head>
 <body>
+<nav><div class="nav-inner">
+  <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="24" stroke="color-mix(in srgb, var(--cobalt) 25%, transparent)" stroke-width="8"/><path d="M15 49 A24 24 0 1 1 49 49" stroke="var(--cobalt)" stroke-width="8" stroke-linecap="round"/><circle cx="49" cy="49" r="6" fill="var(--amber)"/></svg>
+  <a href="index.html" style="color:var(--ink)">Confidence Coach</a>
+</div></nav>
+<main>
 <h1>Privacy Policy</h1>
-<p class="updated">Confidence Coach · Last updated July 15, 2026</p>
+<p class="updated">Effective July 15, 2026 · Confidence Coach is operated by <strong>Emouna LLC</strong> (<a href="https://emouna.com.mx">emouna.com.mx</a>)</p>
 
-<p>Confidence Coach is a personal development app. This policy explains what we collect, why, and the controls you have. The short version: your coaching data belongs to you, we do not sell it, and you can export or delete everything from inside the app.</p>
+<div class="card"><p><strong>The short version:</strong> your coaching data belongs to you. You can see everything the coach knows, export all of it, or delete it forever, from inside the app. We do not sell personal data, we do not put your words in analytics, and we do not track you across other apps.</p></div>
 
-<h2>What we collect</h2>
+<h2>1. Who we are</h2>
+<p>Emouna LLC ("Emouna", "we") operates Confidence Coach, a personal development app for iPhone. This policy covers the app and this website. Contact: <a href="mailto:jackemouna@gmail.com">jackemouna@gmail.com</a>.</p>
+
+<h2>2. Information we collect</h2>
 <ul>
-  <li><strong>Account:</strong> your email address and sign-in identifier.</li>
-  <li><strong>Coaching content:</strong> your assessment answers, daily reflections, chat messages with the coach, your goal, and the coaching profile the AI builds from them.</li>
-  <li><strong>Progress data:</strong> confidence scores, challenge results, streaks, and evidence items you save.</li>
-  <li><strong>Subscription status:</strong> whether you have an active subscription, via Apple. We never see your payment details.</li>
-  <li><strong>Usage events:</strong> anonymous events such as "check-in started" or "plan generated". These never contain the content of your messages.</li>
+  <li><strong>Account information:</strong> your email address and sign in identifier (Sign in with Apple).</li>
+  <li><strong>Coaching content you provide:</strong> assessment answers, daily reflections, messages to your coach, your goal, and evidence items you save. Photos added to your Evidence Vault stay on your device and are not uploaded.</li>
+  <li><strong>Content we generate about you:</strong> your confidence scores, coaching profile (including the behavior profile the AI builds from your answers), challenge history, and streaks.</li>
+  <li><strong>Subscription status:</strong> whether you have an active subscription, received from Apple. We never see your payment card.</li>
+  <li><strong>Usage events:</strong> product events such as "check-in started" or "plan generated". These never include the content of your messages.</li>
+  <li><strong>Diagnostics:</strong> crash and hang reports from Apple MetricKit containing technical stack traces, never your content.</li>
 </ul>
 
-<h2>How AI processing works</h2>
-<p>Your reflections and answers are sent to our server, which uses OpenAI's API to generate your coaching content. We send only the minimum context needed: your coaching profile, recent history, and the current conversation. We request that the provider not retain responses for training. The numeric confidence score is always computed by our server, never invented by the AI.</p>
-
-<h2>Where your data lives</h2>
-<p>Data is stored with Supabase (hosted on AWS in the United States), protected by row level security so only your account can read your rows. Coaching audio is generated on demand and stored privately with short-lived signed links. Photos you add to your Evidence Vault stay on your device.</p>
-
-<h2>What we never do</h2>
+<h2>3. How we use information</h2>
 <ul>
-  <li>We never sell your personal data.</li>
-  <li>We never put your message content into analytics.</li>
-  <li>We never use your coaching content for advertising.</li>
+  <li>To run the service: generate your daily coaching, compute your scores, keep your history.</li>
+  <li>To process AI requests: your relevant context is sent to OpenAI's API to generate coaching content and voice audio. We send the minimum needed and request that responses are not retained for training. The numeric score is always computed by our servers, never by the AI.</li>
+  <li>To improve the product using aggregate, content free usage events.</li>
+  <li>To keep you safe: messages are screened by moderation systems; content indicating a safety risk pauses coaching and surfaces crisis resources.</li>
+</ul>
+<p>We do not sell personal data, use it for third party advertising, or track you across other companies' apps or websites.</p>
+
+<h2>4. Where data lives and how it is protected</h2>
+<p>Data is stored with Supabase (hosted on Amazon Web Services in the United States). Every record is protected by row level security so only your authenticated account can access your rows. Coaching audio is stored privately and served through short lived signed links. Traffic is encrypted in transit.</p>
+
+<h2>5. Your controls (available to every user, free or paid)</h2>
+<ul>
+  <li><strong>See and edit the coach's memory:</strong> Profile → What My Coach Knows.</li>
+  <li><strong>Export everything:</strong> Profile → Export Personal Data (JSON).</li>
+  <li><strong>Delete everything:</strong> Profile → Delete Account permanently removes chats, profile, scores, plans, evidence, audio, and your account. Subscriptions are managed by Apple and must be cancelled in your device Settings.</li>
 </ul>
 
-<h2>Your controls</h2>
-<ul>
-  <li><strong>See what the coach knows:</strong> Profile → What My Coach Knows shows the AI's memory. You can edit or delete any item, or clear it all.</li>
-  <li><strong>Export:</strong> Profile → Export Personal Data gives you a complete copy in JSON.</li>
-  <li><strong>Delete:</strong> Profile → Delete Account permanently removes your chats, profile, scores, plans, evidence, audio, and account. Deleting your account does not cancel an Apple subscription; manage that in your device Settings.</li>
-</ul>
-<p>These controls are available to every user, free or paid.</p>
+<h2>6. Retention</h2>
+<p>We keep your data while your account exists. Deleting your account removes it permanently. Diagnostics and content free usage events may be kept in aggregate form.</p>
 
-<h2>Safety</h2>
-<p>If messages indicate a safety risk, the app pauses normal coaching and shows crisis resources. Confidence Coach is not therapy, medical care, or an emergency service.</p>
+<h2>7. Children</h2>
+<p>Confidence Coach is for adults 18 and older. We do not knowingly collect data from anyone under 18.</p>
 
-<h2>Age</h2>
-<p>Confidence Coach is intended for adults 18 and older.</p>
+<h2>8. Changes</h2>
+<p>If this policy changes materially, we will note it in the app before the change takes effect.</p>
 
-<h2>Changes and contact</h2>
-<p>If this policy changes materially we will note it in the app. Questions or requests: <a href="mailto:jackemouna@gmail.com">jackemouna@gmail.com</a>.</p>
+<h2>9. Contact</h2>
+<p>Privacy questions or requests: <a href="mailto:jackemouna@gmail.com">jackemouna@gmail.com</a>. Emouna LLC, <a href="https://emouna.com.mx">emouna.com.mx</a>.</p>
+</main>
+<footer>© 2026 Emouna LLC · <a href="index.html">Home</a> · <a href="terms.html">Terms of Use</a></footer>
 </body>
 </html>
